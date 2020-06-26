@@ -1,0 +1,19 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "This app tracks burgers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgartdu/burger.git"
+  },
+  "author": "Brandon Gart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgartdu/burger/issues"
+  },
+  "homepage": "https://github.com/bgartdu/burger#readme"
+}
