@@ -9,3 +9,20 @@ router.get("/", async function(request, response) {
 
     response.send(burgers);
 });
+
+router.post("/create", async function (request, response) {
+    const data = request.body;
+    const burger = new Burger(-1, data.name, false);
+
+    BurgerModule.insert(burger);
+});
+
+router.post("/devour/:id", async function(request, response){
+
+
+    BurgerModule.devour(request.params.id);
+})
+
+
+
+module.exports = router;
