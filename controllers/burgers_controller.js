@@ -5,22 +5,36 @@ const BurgerModule = require("../models/burger");
 const router = express.Router();
 
 router.get("/", async function(request, response) {
-    const burgers = BurgerModule.getAll();
-
+    const burgers = await BurgerModule.getAll();
+    
     response.send(burgers);
 });
 
 router.post("/create", async function (request, response) {
     const data = request.body;
     const burger = new Burger(-1, data.name, false);
-
-    BurgerModule.insert(burger);
+    
+    const id = await BurgerModule.insert(burger);
+    
+    if (id > 0) {
+        response.send({ success: true, id });
+    } else {
+        response.send({ success: false, errorCode: id });
+    }
 });
 
 router.post("/devour/:id", async function(request, response){
-
-
-    BurgerModule.devour(request.params.id);
+    
+    
+    const errorCode = await BurgerModule.devour(request.params.id);
+    
+    if (!errorCode) {
+        response.send({ success: true });
+    } else {
+        response.send({success: false, errorCode });
+    }
+    
+    
 })
 
 
